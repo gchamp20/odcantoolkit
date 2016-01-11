@@ -1,6 +1,6 @@
 import unittest
-from canadaODPtool.output.generation import JSONMaker
-from canadaODPtool.parser.csv import CsvParser
+from ODCanToolkit.output.generation import JSONMaker
+from ODCanToolkit.parser.csv import CsvParser
 
 
 class JSONMakerTestCase(unittest.TestCase):

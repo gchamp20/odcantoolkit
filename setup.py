@@ -5,16 +5,16 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='canadaODPtool',
+    name='canadaODPTool',
     version='0.1dev',
-    description='Simple python tool to fetch data from Canada\'s open data portal',
+    description='Python tool to fetch data from Canada\'s open data portal',
     long_description=long_description,
 
-    url='https://github.com/gchamp20/canadaODPtool',
+    url='https://github.com/gchamp20/ODCanToolkit',
 
     author='Guillaume Champagne',
     author_email='guillaume.champagne@polymtl.ca',
@@ -47,8 +47,8 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'canadaODPjson=canadaODPtool:main',
-            'canadaODPmongodb=canadaODPtool:mongodtest'
+            'ODPCanJson=canadaODPtool:main',
+            'ODPCanMongodb=canadaODPtool:mongodtest'
         ],
     },
 )

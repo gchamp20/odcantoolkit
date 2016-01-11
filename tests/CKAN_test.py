@@ -1,7 +1,7 @@
 import unittest
 import json
-from canadaODPtool.CKAN import CKAN_API
-from canadaODPtool.CKAN.CKAN_API import ResponseParser
+from ODCanToolkit.CKAN import CKAN_API
+from ODCanToolkit.CKAN.CKAN_API import ResponseParser
 from urllib import error
 
 
