@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='canadaODPTool',
+    name='ODCanToolkit',
     version='0.1dev',
     description='Python tool to fetch data from Canada\'s open data portal',
     long_description=long_description,
@@ -47,8 +47,8 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'ODPCanJson=canadaODPtool:main',
-            'ODPCanMongodb=canadaODPtool:mongodtest'
+            'ODCanJson=ODCanToolkit:main',
+            'ODCanMongodb=ODCanToolkit:mongodtest'
         ],
     },
 )

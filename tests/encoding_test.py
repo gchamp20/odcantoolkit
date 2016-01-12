@@ -17,3 +17,7 @@ class guess_encodingTestCase(unittest.TestCase):
         self.assertEqual(encodingType, "utf_8")
 
         # couldn't create a cp863 on linux mint, should be added
+
+
+if __name__ == '__main__':
+    unittest.main()

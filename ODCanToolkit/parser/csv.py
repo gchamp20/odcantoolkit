@@ -33,7 +33,7 @@ class CsvParser(AbstractParser):
         The Sniffer module is used to detect the correct file delimiters
         """
 
-        dialect = csv.Sniffer().sniff(self._file.read(4096))
+        dialect = csv.Sniffer().sniff(self._file.read())
         self._file.seek(0)
         return csv.reader(self._file, dialect)
 

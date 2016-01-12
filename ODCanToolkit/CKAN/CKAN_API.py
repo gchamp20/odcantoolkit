@@ -1,8 +1,7 @@
-import urllib.request
+from os import path
 import urllib
 import json
 import re
-
 
 URL_REGEX = re.compile("^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$")  # credits to @stephenhay
 
@@ -25,8 +24,8 @@ class Request:
         return self._execute_action('package_show', {'id': id})
 
     def _execute_action(self, functionName, params=None):
-        request = self._make_request_object(functionName, params)
-        response = self._send_request(request)
+        req = self._make_request_object(functionName, params)
+        response = self._send_request(req)
         response = json.loads(response)
         return response
 
@@ -114,3 +113,40 @@ class ResponseParser:
             if result.get_format() in typeFilter:
                 tempPayload.append(result)
         return tempPayload
+
+
+def make_package_show_request(id, fileformat=None):
+    """ Returns CKAN_API.FileInfo object list
+
+    Uses CKAN_API module to send a package_show request and parse
+    the anwser.
+    id -- Package ID
+    fileformat -- Fileformat to fetch
+    """
+    if fileformat is None:
+        fileformat = ["CSV"]
+    api = Request("http://open.canada.ca/data/en/api/3/")
+    PACKAGE_ID_REGEX = re.compile("^(\w+-?)+$")
+
+    if not PACKAGE_ID_REGEX.match(id):
+        raise RuntimeError("Wrong package ID format.")
+
+    metadata = api.package_show(id)
+    fileFilter = {x.upper() for x in fileformat}
+    fileInfos = ResponseParser.extract_files_infos(metadata, fileFilter)
+    return fileInfos
+
+
+def download_file(fileinfo):
+    """ Returns downloaded file absolute path
+
+    fileinfo -- FileInfo object to download
+    """
+    print("\nDownloading requested file...")
+    (name, url) = (fileinfo.get_name, fileinfo.get_url())
+    extension = url.split('.')
+    extension = extension[len(extension) - 1]
+    name = name.replace(' ', '_').replace(',', '') + '.' + extension
+    urllib.request.urlretrieve(url, name)
+    print("Download successful.")
+    return path.abspath(name)

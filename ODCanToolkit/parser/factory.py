@@ -22,3 +22,14 @@ class NoParserFoundError(Exception):
 
     def __str__(self):
         return repr(self.value)
+
+
+def make_parser(fileformat, filename):
+    """ Returns parser for the specified fileofmrat
+
+    fileformat -- Format of the parsed file.
+    filename -- Name of the parsed file.
+    """
+    parser = ParserFactory.build_parser(fileformat,
+                                        filename)
+    return parser

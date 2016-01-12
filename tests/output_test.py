@@ -19,5 +19,7 @@ class JSONMakerTestCase(unittest.TestCase):
         self.assertEqual(jsonData[1]['int'], -54)
         self.assertEqual(jsonData[1]['float'], -23.45)
         self.assertEqual(jsonData[2]['int'], 2224432)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,8 +1,9 @@
 import unittest
 import json
+from urllib import error
+from os import path, remove
 from ODCanToolkit.CKAN import CKAN_API
 from ODCanToolkit.CKAN.CKAN_API import ResponseParser
-from urllib import error
 
 
 class ResquestTestCase(unittest.TestCase):
@@ -47,6 +48,21 @@ class ResponseParserTestCase(unittest.TestCase):
                 # test with non existent filter
                 infos = ResponseParser.extract_files_infos(jsonObj, {"PPT"})
                 self.assertEqual(len(infos), 0)
+
+
+class CKANFunctionsTestCase(unittest.TestCase):
+    def test_download_file(self):
+        obj = CKAN_API.FileInfo({
+            'name': "robot",
+            'language': "ca;en",
+            'format': "txt",
+            'url': "https://www.google.ca/robots.txt"
+        })
+        expectedPath = path.abspath("robot.txt")
+        receivedPath = CKAN_API.download_file(obj)
+        remove(receivedPath)
+        self.assertEqual(expectedPath, receivedPath)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -13,5 +13,6 @@ class csvParserTestCase(unittest.TestCase):
         p2 = CsvParser("tests/ressources/parser/wrong_headers.csv")
         self.assertRaises(RuntimeError, p2.find_headers)
 
+
 if __name__ == '__main__':
     unittest.main()
