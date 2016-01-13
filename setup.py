@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='odcantoolkit',
-    version='0.1',
+    version='0.1.1',
     description='Python tool to fetch data from Canada\'s open data portal',
     long_description=long_description,
 
