@@ -1,5 +1,5 @@
 import unittest
-from ODCanToolkit.encoding import guessing
+from odcantoolkit.encoding import guessing
 
 
 class guess_encodingTestCase(unittest.TestCase):

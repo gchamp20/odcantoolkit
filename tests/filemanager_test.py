@@ -1,5 +1,5 @@
 import unittest
-from ODCanToolkit.filemanager import unzipfile
+from odcantoolkit.filemanager import unzipfile
 from os import mkdir
 
 

@@ -9,12 +9,12 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='ODCanToolkit',
+    name='odcantoolkit',
     version='0.1',
     description='Python tool to fetch data from Canada\'s open data portal',
     long_description=long_description,
 
-    url='https://github.com/gchamp20/ODCanToolkit',
+    url='https://github.com/gchamp20/odcantoolkit',
 
     author='Guillaume Champagne',
     author_email='guillaume.champagne@polymtl.ca',
@@ -41,7 +41,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'ODCanToolkit=ODCanToolkit:launch',
+            'odcantoolkit=odcantoolkit:launch',
         ],
     },
 )

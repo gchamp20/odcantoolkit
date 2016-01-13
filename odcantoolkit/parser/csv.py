@@ -1,5 +1,5 @@
 import csv
-from ODCanToolkit.parser.abstract import AbstractParser
+from odcantoolkit.parser.abstract import AbstractParser
 
 
 class CsvParser(AbstractParser):

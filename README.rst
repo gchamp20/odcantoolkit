@@ -1,10 +1,10 @@
-ODCanToolkit - Open Data Canada Toolkit
+odcantoolkit - Open Data Canada Toolkit
 =======================================
 
 Overview
 --------
 
-ODCanToolkit is a command line tool used to fetch datasets directly from
+odcantoolkit is a command line tool used to fetch datasets directly from
 `Canada's open data portal <http://open.canada.ca/>`__. The data is then
 converted to JSON format and can be loaded directly into a MongoDB
 database.

@@ -4,12 +4,12 @@ from sys import exit
 import json
 import urllib.error
 
-from ODCanToolkit.CKAN.CKAN_API import make_package_show_request, download_file
-from ODCanToolkit.output.generation import JSONMaker
-from ODCanToolkit.parser.factory import make_parser
-from ODCanToolkit.parser.factory import NoParserFoundError
-from ODCanToolkit.database.mongodb import IMongoDB
-from ODCanToolkit import filemanager
+from odcantoolkit.CKAN.CKAN_API import make_package_show_request, download_file
+from odcantoolkit.output.generation import JSONMaker
+from odcantoolkit.parser.factory import make_parser
+from odcantoolkit.parser.factory import NoParserFoundError
+from odcantoolkit.database.mongodb import IMongoDB
+from odcantoolkit import filemanager
 from pymongo.errors import ServerSelectionTimeoutError
 from bson.errors import InvalidDocument
 

@@ -2,8 +2,8 @@ import unittest
 import json
 from urllib import error
 from os import path, remove
-from ODCanToolkit.CKAN import CKAN_API
-from ODCanToolkit.CKAN.CKAN_API import ResponseParser
+from odcantoolkit.CKAN import CKAN_API
+from odcantoolkit.CKAN.CKAN_API import ResponseParser
 
 
 class ResquestTestCase(unittest.TestCase):

@@ -1,6 +1,6 @@
 import json
 import re
-from ODCanToolkit.parser.abstract import AbstractParser
+from odcantoolkit.parser.abstract import AbstractParser
 
 INT_REGEX = re.compile("^-?([0-9]\s?)+$")
 FLOAT_REGEX = re.compile("^-?[0-9]+(\.)[0-9]+$")

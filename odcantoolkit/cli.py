@@ -1,6 +1,6 @@
 import argparse
 import sys
-from ODCanToolkit import prompt
+from odcantoolkit import prompt
 
 
 class CliInterface():
@@ -13,7 +13,7 @@ class CliInterface():
     @staticmethod
     def start_program():
         parser = argparse.ArgumentParser(
-            usage='''ODCanToolkit <command> [args]
+            usage='''odcantoolkit <command> [args]
 
 Available commands are:
     json    Fecth a dataset and creates JSON file

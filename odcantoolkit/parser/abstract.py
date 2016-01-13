@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from ODCanToolkit.encoding import guessing
+from odcantoolkit.encoding import guessing
 
 
 class AbstractParser(metaclass=ABCMeta):

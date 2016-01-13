@@ -1,5 +1,5 @@
 import unittest
-from ODCanToolkit.parser.csv import CsvParser
+from odcantoolkit.parser.csv import CsvParser
 
 
 class csvParserTestCase(unittest.TestCase):
