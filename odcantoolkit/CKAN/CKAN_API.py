@@ -141,9 +141,7 @@ def download_file(fileinfo):
 
     fileinfo -- FileInfo object to download
     """
-    (name, url) = (fileinfo.get_name(), fileinfo.get_url())
-    extension = url.split('.')
-    extension = extension[len(extension) - 1]
-    name = name.replace(' ', '_').replace(',', '') + '.' + extension
+    url = fileinfo.get_url()
+    name = url.split('/')[-1]
     urllib.request.urlretrieve(url, name)
     return path.abspath(name)
