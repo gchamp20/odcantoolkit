@@ -13,11 +13,11 @@ class CliInterface():
     @staticmethod
     def start_program():
         parser = argparse.ArgumentParser(
-            usage='''odcantoolkit <command> [args]
+#            usage='''odcantoolkit <command> [args]
 
-Available commands are:
-    json    Fecth a dataset and creates JSON file
-    mongo   Fetch a dataset and inserts it in MongoDB'''
+#Available commands are:
+#    json    Fecth a dataset and creates JSON file
+#    mongo   Fetch a dataset and inserts it in MongoDB'''
         )
         parser.add_argument('command', help='Command to run')
         args = parser.parse_args(sys.argv[1:2])
@@ -32,15 +32,17 @@ Available commands are:
         """Inits command line arugments for the script
         Returns argparser object
         """
+        argparser.add_argument("--fileformat",
+                               help="File format to fetch. Default is CSV")
         argparser.add_argument("id", help="ID to fetch from open.canada.ca")
-        argparser.add_argument("--fileformat", nargs='+',
-                               help="File formats to fetch. Default is CSV only")
+
 
     @staticmethod
     def json():
         """Starts main program with json mode argument list."""
         argParser = argparse.ArgumentParser()
         CliInterface._init_common_arguments(argParser)
+        args = argParser.parse_args(sys.argv[2:])
         prompt.main(jsonmode=True, args=argParser.parse_args(sys.argv[2:]))
 
     @staticmethod

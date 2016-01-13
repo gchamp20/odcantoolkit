@@ -41,7 +41,7 @@ dataset, the command would be :
 
 ::
 
-    odcantoolkit mongo [-h] [--fileformat FILEFORMAT [FILEFORMAT ...]]
+    odcantoolkit mongo [-h] [--fileformat FILEFORMAT FILEFORMAT]
                         [--dbname DBNAME] [--collection COLLECTION] [--host HOST]
                         [--port PORT]
                         id

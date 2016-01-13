@@ -41,12 +41,12 @@ class ResponseParserTestCase(unittest.TestCase):
                 self.assertEqual(infos[0].get_format(), "CSV")
 
                 # test with filter
-                infos = ResponseParser.extract_files_infos(jsonObj, {"CSV"})
+                infos = ResponseParser.extract_files_infos(jsonObj, "CSV")
                 self.assertEqual(len(infos), 2)
                 self.assertEqual(infos[0].get_format(), "CSV")
 
                 # test with non existent filter
-                infos = ResponseParser.extract_files_infos(jsonObj, {"PPT"})
+                infos = ResponseParser.extract_files_infos(jsonObj, "PPT")
                 self.assertEqual(len(infos), 0)
 
 

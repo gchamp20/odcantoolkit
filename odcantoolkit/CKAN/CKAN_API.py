@@ -110,7 +110,7 @@ class ResponseParser:
     def _remove_wrong_formats(payload, typeFilter):
         tempPayload = []
         for result in payload:
-            if result.get_format() in typeFilter:
+            if result.get_format().upper() == typeFilter.upper():
                 tempPayload.append(result)
         return tempPayload
 
@@ -124,7 +124,7 @@ def make_package_show_request(id, fileformat=None):
     fileformat -- Fileformat to fetch
     """
     if fileformat is None:
-        fileformat = ["CSV"]
+        fileformat = "CSV"
     api = Request("http://open.canada.ca/data/en/api/3/")
     PACKAGE_ID_REGEX = re.compile("^(\w+-?)+$")
 
@@ -132,8 +132,7 @@ def make_package_show_request(id, fileformat=None):
         raise RuntimeError("Wrong package ID format.")
 
     metadata = api.package_show(id)
-    fileFilter = {x.upper() for x in fileformat}
-    fileInfos = ResponseParser.extract_files_infos(metadata, fileFilter)
+    fileInfos = ResponseParser.extract_files_infos(metadata, fileformat)
     return fileInfos
 
 
