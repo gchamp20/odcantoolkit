@@ -28,26 +28,25 @@ Available commands are:
         getattr(CliInterface, args.command)()
 
     @staticmethod
-    def _init_common_arguments():
+    def _init_common_arguments(argparser):
         """Inits command line arugments for the script
         Returns argparser object
         """
-        argParser = argparse.ArgumentParser()
-        argParser.add_argument("id", help="ID to fetch from open.canada.ca")
-        argParser.add_argument("--fileformat", nargs='+',
+        argparser.add_argument("id", help="ID to fetch from open.canada.ca")
+        argparser.add_argument("--fileformat", nargs='+',
                                help="File formats to fetch. Default is CSV only")
-        return argParser
 
     @staticmethod
     def json():
         """Starts main program with json mode argument list."""
-        argParser = CliInterface._init_common_arguments()
+        argParser = argparse.ArgumentParser()
+        CliInterface._init_common_arguments(argParser)
         prompt.main(jsonmode=True, args=argParser.parse_args(sys.argv[2:]))
 
     @staticmethod
     def mongo():
         """Starts main program with mongo mode argument list. """
-        argParser = CliInterface._init_common_arguments()
+        argParser = argparse.ArgumentParser()
         argParser.add_argument("--dbname", help="Database name. Default is db",
                                default="db")
         argParser.add_argument("--collection", help="Collection name. Default is ckan",
@@ -56,4 +55,5 @@ Available commands are:
                                default="localhost")
         argParser.add_argument("--port", help="Database port. Default is 27017",
                                default=27017, type=int)
+        CliInterface._init_common_arguments(argParser)
         prompt.main(jsonmode=False, args=argParser.parse_args(sys.argv[2:]))
