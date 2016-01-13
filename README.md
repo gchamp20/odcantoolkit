@@ -11,8 +11,33 @@ Currently supported file formats:
 
 ## Installation
 The script can be simply installed via pip
+
 ```
-pip install ODCanToolkit
+pip install odcantoolkit
 ```  
 
 ## Usage
+
+# JSON mode
+
+```
+odcantoolkit json [--filetype FILETYPE] id 
+```
+
+The id is taken from a dataset's URL. To fecth [this](http://open.canada.ca/data/en/dataset/4deb7637-3613-4012-84a2-882b06ab7458) dataset, the command would be :
+
+```
+odcantoolkit json 4deb7637-3613-4012-84a2-882b06ab7458
+```
+
+# MongoDB mode
+
+```
+odcantoolkit mongo [-h] [--fileformat FILEFORMAT [FILEFORMAT ...]]
+                    [--dbname DBNAME] [--collection COLLECTION] [--host HOST]
+                    [--port PORT]
+                    id
+```
+
+
+

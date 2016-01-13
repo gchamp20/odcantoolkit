@@ -57,8 +57,9 @@ def mongodb_mode(jsonmaker, args):
                                         args.port,
                                         args.dbname,
                                         args.collection)
-    db = IMongoDB(dbname, collection, host, port)  # could throw
+    db = IMongoDB(dbname, collection, host, port)
     data = jsonmaker.make_json_dictionary()
+    print("Connecting to database...")
     try:
         db.insert(data)
     except ServerSelectionTimeoutError:
