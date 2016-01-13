@@ -83,6 +83,7 @@ def json_mode(jsonmaker, filename):
 
 
 def main(jsonmode, args):
+    print("Sending request to open.canada.ca...")
     try:
         fileInfos = make_package_show_request(args.id, args.fileformat)
     except urllib.error.HTTPError as err:
@@ -99,7 +100,9 @@ def main(jsonmode, args):
     if choosenFile is None:
         return
 
+    print("\nDownloading requested file...")
     filename = download_file(choosenFile)
+    print("Download successful.")
     files_name = filemanager.handle_downloaded_file(filename, choosenFile.get_format())
 
     if len(files_name) <= 0:

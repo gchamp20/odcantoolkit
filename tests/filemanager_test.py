@@ -6,7 +6,10 @@ from os import mkdir
 class filemanagerTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        mkdir("tests/results/")
+        try:
+            mkdir("tests/results/")
+        except FileExistsError:
+            pass # silently ignore if folder already there
 
     def test_unzipfile(self):
         received = unzipfile("tests/ressources/filemanager/test.zip", "csv", "tests/results/")

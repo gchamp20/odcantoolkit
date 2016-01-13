@@ -9,10 +9,6 @@ class csvParserTestCase(unittest.TestCase):
         self.assertEqual(len(headers), 13)
         self.assertEqual(headers[0], "Industry")
 
-        # Checking the correct exception is raised when the headers coudn't be found
-        p2 = CsvParser("tests/ressources/parser/wrong_headers.csv")
-        self.assertRaises(RuntimeError, p2.find_headers)
-
 
 if __name__ == '__main__':
     unittest.main()
