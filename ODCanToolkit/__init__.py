@@ -1,9 +1,5 @@
 import ODCanToolkit.prompt
+from ODCanToolkit.cli import CliInterface
 
-
-def main():
-    prompt.main(jsonmode=True)
-
-
-def mongodtest():
-    prompt.main(jsonmode=False)
+def launch():
+    CliInterface.start_program()

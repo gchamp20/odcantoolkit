@@ -2,14 +2,13 @@ from csv import Error
 from os import path
 from sys import exit
 import json
-import urllib
+import urllib.error
 
 from ODCanToolkit.CKAN.CKAN_API import make_package_show_request, download_file
 from ODCanToolkit.output.generation import JSONMaker
 from ODCanToolkit.parser.factory import make_parser
 from ODCanToolkit.parser.factory import NoParserFoundError
 from ODCanToolkit.database.mongodb import IMongoDB
-from ODCanToolkit import cli
 from ODCanToolkit import filemanager
 from pymongo.errors import ServerSelectionTimeoutError
 from bson.errors import InvalidDocument
@@ -77,18 +76,13 @@ def json_mode(jsonmaker, filename):
     jsonmaker -- JSONMaker object to extract json data from
     filename -- Name of the output file
     """
-    jsonData = jsonmaker.jsonify()
+    jsonData = jsonmaker.make_json_dictionary()
     with open(filename, 'w') as outfile:
         json.dump(jsonData, outfile)
     print("{0} successfully created.".format(filename))
 
 
-def main(jsonmode):
-    if jsonmode:
-        args = cli.get_cli_json_arguments()
-    else:
-        args = cli.get_cli_mongodb_arguments()
-
+def main(jsonmode, args):
     try:
         fileInfos = make_package_show_request(args.id, args.fileformat)
     except urllib.error.HTTPError as err:
@@ -112,7 +106,6 @@ def main(jsonmode):
         error_and_exit("Cannot find the requested file in the zip archive")
 
     for f in files_name:
-        print(f)
         try:
             parser = make_parser(choosenFile.get_format(), f)
         except NoParserFoundError as err:

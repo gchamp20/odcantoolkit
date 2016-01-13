@@ -1,5 +1,5 @@
 from os import path
-import urllib
+import urllib.request
 import json
 import re
 
@@ -143,7 +143,7 @@ def download_file(fileinfo):
     fileinfo -- FileInfo object to download
     """
     print("\nDownloading requested file...")
-    (name, url) = (fileinfo.get_name, fileinfo.get_url())
+    (name, url) = (fileinfo.get_name(), fileinfo.get_url())
     extension = url.split('.')
     extension = extension[len(extension) - 1]
     name = name.replace(' ', '_').replace(',', '') + '.' + extension
