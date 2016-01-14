@@ -58,7 +58,7 @@ class CKANFunctionsTestCase(unittest.TestCase):
             'format': "txt",
             'url': "https://www.google.ca/robots.txt"
         })
-        expectedPath = path.abspath("robot.txt")
+        expectedPath = path.abspath("robots.txt")
         receivedPath = CKAN_API.download_file(obj)
         remove(receivedPath)
         self.assertEqual(expectedPath, receivedPath)
